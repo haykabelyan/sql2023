@@ -1,0 +1,37 @@
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=ec93fdb2ca72595361b2f0f21f7dd3f5&hide=1
+
+select * from skill_product
+
+update skill_product
+set product_category_id=0,
+price_usd = price_usd*1.1
+
+update skill_product
+set product_category_id=0,
+price_usd = price_usd*1.1
+where  product_category_id =1
+
+
+update skill_product
+set product_category_id=0,
+price_usd = price_usd*1.1
+where  product_category_id in
+(select product_category_id from skill_product_category
+where product_category_name='soft')
+
+
+// MIAYN MYSQL karox enk mi qani tabel reum update anel
+update skill_product t1, skill_product_category t2
+set 
+t1.product_category_id=100,
+t2.product_category_id=100
+where  
+t1.product_category_id=1
+and t2.product_category_id=1
+
+
+
+delete from skill_managers where gender='M' 
+
+delete from skill_managers
+

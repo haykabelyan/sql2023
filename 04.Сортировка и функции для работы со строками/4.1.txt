@@ -1,0 +1,71 @@
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=eafb95841e592d7b6999864fe785c770&hide=1
+select * from skill_managers where gender='F' and age>25 and age<50
+
+
+
+ZADANIE 1:
+select * from skill_managers
+select * from skill_managers where age=47
+select * from skill_price where cnt=15
+select * from skill_continents where continent_name='Europe'
+select * from skill_countries where continent_id=3
+
+ZADANIE 2:
+select * from skill_price where price_rub=100
+select * from skill_managers where age=41
+select * from skill_managers where gender='F'
+select * from skill_cities where city_name='Vitebsk'
+select * from skill_cities where is_capital=1
+
+ZADANIE 3:
+select * from skill_price where price_rub>=10 and price_rub<=100
+select * from skill_managers where gender='F' and age>25 and age<50
+select * from skill_managers where gender='F' or age<=25
+select * from skill_cities where is_capital=1 or population>=1000000
+
+
+ZADANIE 4:
+select * from skill_managers where age in (21,24,27,31,33,3,41,43,45,51,55)
+select * from skill_managers where first_name in ('Ellis','Piter','Max')and age>=23 and age<=42
+select * from skill_managers where (last_name like '%er' or last_name like '%nen') and gender='M'
+select * from skill_cities where city_name like '%jin%'
+select * from skill_managers where last_name like '%a%' and last_name like '%o%' and last_name like '%c%'
+
+
+
+ZADANIE 5:
+
+select * from skill_managers where
+age not in(21, 24, 27, 25)
+and age < 30
+and first_name not in('Max')
+and last_name not like '%son'
+and last_name not like '%nen'
+and last_name not like 'Mac%'
+
+
+select * from skill_managers where
+(age not in(21, 24, 27, 25)
+and age < 30
+and first_name not in('Max')
+and last_name not like '%son'
+and last_name not like '%nen'
+and last_name not like 'Mac%') and gender='M'
+or (age in(25,27) and gender='F')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

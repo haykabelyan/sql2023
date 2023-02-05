@@ -1,0 +1,52 @@
+
+
+select * from skill_managers
+
+select * from skill_managers where
+last_transaction_dt >= '2020-11-19 17:54:32'
+
+select * from skill_managers where
+last_transaction_dt >= '2020-11-19 17:54:00'
+
+select * from skill_managers where
+last_transaction_dt >= '2020-11-19 00:00'
+
+select * from skill_managers where
+last_transaction_dt >= '2020-11-19'
+
+select * from skill_managers where
+last_transaction_dt like '2020-11-19%
+
+SQLSERVER ov chi lini MYSQL klini
+select * from skill_managers where
+last_transaction_dt like '2020-11-19%'
+
+
+
+select * from skill_managers where
+last_transaction_dt >= '2020-11-12'
+and last_transaction_dt < '2020-11-14'
+
+select * from skill_managers where
+YEAR(last_transaction_dt) = 2020
+and DAY(last_transaction_dt) = 11
+
+
+
+// ZADANIE 1
+select * from skill_managers
+where last_transaction_dt >= '2020-02-06' and
+last_transaction_dt < '2020-02-07'
+
+
+// ZADANIE 2
+select * from skill_managers
+where CAST(last_transaction_dt AS Date) = '2020-02-06'
+
+// ZADANIE 3
+select * from skill_managers
+where datepart(day,last_transaction_dt) >= '06'
+and datepart(day,last_transaction_dt) < '07'
+and datepart(month,last_transaction_dt) = '02'
+and datepart(year,last_transaction_dt) = '2020'
+

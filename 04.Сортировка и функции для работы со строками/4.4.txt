@@ -1,0 +1,6 @@
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=eafb95841e592d7b6999864fe785c770&hide=1
+
+
+
+select upper(first_name) first_name, upper(last_name) last_name from skill_managers
+select lower(first_name) first_name, lower(last_name) last_name from skill_managers

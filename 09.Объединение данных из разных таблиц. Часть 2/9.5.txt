@@ -1,0 +1,12 @@
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=245a0da2f9bf87cf42ccb5749c597430&hide=1
+
+
+select * from skill_deals
+select * from skill_customers_suppliers
+
+select skill_deals.dt, t1.name customer_name,
+t2.name supplier_name from skill_deals
+join skill_customers_suppliers t1
+on t1.customers_suppliers_id = skill_deals.customer_id
+join skill_customers_suppliers t2
+on t2.customers_suppliers_id = skill_deals.supplier_id

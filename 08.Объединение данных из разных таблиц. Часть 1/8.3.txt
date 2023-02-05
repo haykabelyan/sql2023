@@ -1,0 +1,36 @@
+
+
+// vor 2 tablenerum el lini
+select * from skill_sales_april
+intersect
+select * from skill_sales_september
+
+
+
+// ete ka arajinum ev bacakayum en erkrodic
+select * from skill_sales_april
+except
+select * from skill_sales_march
+
+
+ZADANIE
+
+1.
+
+select * from city_customers
+intersect
+select * from city_suppliers
+
+2.
+
+select * from city_customers
+except
+select * from city_suppliers;
+
+3.
+
+select * from city_suppliers
+except
+select * from city_customers;
+
+

@@ -1,0 +1,21 @@
+
+
+SYSTEMNOE VREMYA
+
+// SQL SERVER, MYSQL, POSTRE ISO standart date
+//verjum .ketic heto milisecondnern en + GMT
+// berum e serveri jamy
+
+
+
+select current_timestamp //aveli shat popoxakan e
+
+select current_timestamp(); // MYSQL
+select getdate(); // SQL SERVER
+select localtime; // MYSQL
+select now();  // MYSQL
+
+select getUTCdate(); // SQL SERVER GMT ov e veradarcnum
+select utc_timestamp; // MYSQL
+select localtimestamp;
+

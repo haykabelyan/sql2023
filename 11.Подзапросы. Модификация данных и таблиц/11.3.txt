@@ -1,0 +1,19 @@
+
+
+
+
+create table skill_product_new(
+product_id int,
+product_name varchar(200),
+product_category_id int,
+price_usd float)
+
+
+select * from skill_product_new
+
+drop table skill_product_new
+
+drop table if exists skill_product_new
+
+
+Vremenniye tablici -  klini miayn mer sisiayi yntacqum

@@ -1,0 +1,66 @@
+
+create table skill_product_empty(
+product_id int,
+product_name varchar(200),
+product_category_id int,
+price_usd float)
+
+
+insert into skill_product_empty
+values
+(1, 'toster', 0, 100.5)
+
+
+insert into skill_product_empty
+values
+(1, 'angular', 0, 100.5),
+(2, 'react', 0, 110.5),
+(3, 'vue', 0, 120.5)
+
+
+select * from skill_product_empty
+
+/////////////////////////////////////////////////////////////////////
+
+insert into skill_product_empty 
+(product_name, price_usd)
+values
+('angular2', 100.5),
+('react2', 110.5),
+('vue2', 120.5)
+
+
+/////////////////////////////////////////////////////////////////////
+
+// tvyalner avelacrecink skill_product_empty-i mec
+
+insert into skill_product_empty 
+select * from skill_product
+
+insert into skill_product_empty 
+(product_name, price_usd)
+select product_name, price_usd from skill_product	// rice_usd*1.1
+
+
+/////////////////////////////////////////////////////////////////////
+
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=487861367f32b741a5e6b1c12b7005b8&hide=1
+
+
+select * from skill_managers
+
+// MSSQL
+select first_name, last_name
+into skill_managers_v2
+from skill_managers where age>=25
+
+// MYSQL
+create table skill_managers_v2 as
+select first_name, last_name
+from skill_managers where age>=25
+
+
+
+
+
+

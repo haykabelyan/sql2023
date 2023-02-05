@@ -1,0 +1,22 @@
+
+
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=18f1b699a74eb42d2ee1a8537bd238eb&hide=1
+
+select * from skill_events
+
+select year(dt_date),
+year(dt_string),
+year(dt_string_v2),
+year(dt_string_v3)
+from skill_events
+
+
+// ZADANIE 1
+select format(convert(date,dt_string_v2 ), 'yyyy MM dd') from skill_events
+select FORMAT(CAST(dt_string_v2 as date),'yyyy MM dd') from skill_events
+
+
+
+// ZADANIE 2
+
+select CAST(replace(replace(replace( dt_bad_string,' year ', ' month '), ' month ', '/'), ' day', '') as date)  from skill_events

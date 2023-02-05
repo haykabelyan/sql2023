@@ -1,0 +1,6 @@
+select * from skill_managers;
+select first_name+last_name full_name from skill_managers;
+select first_name+' '+last_name full_name from skill_managers;
+select 17+33 from skill_managers	// bayc tableic ban  chenk vercrel
+select 17+33 
+select '17'+'33' 	// test SQL Server, MySql ov aykldzev cuyc kta, Postgre ov sxal kta 

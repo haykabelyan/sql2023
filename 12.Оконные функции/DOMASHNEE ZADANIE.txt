@@ -1,0 +1,177 @@
+https://dbfiddle.uk/
+
+
+
+Задание 1
+1. В тестовой среде создайте пустую таблицу managers_1 со следующей структурой:
+Название поля	Тип данных	Описание поля
+manager_id		int					Идентификатор менеджера
+first_name		varchar(255)		Имя
+last_name		varchar(255)		Фамилия
+age				int					Возраст
+gender			varchar(1)			Пол
+age_group		varchar(255)		Возрастная группа
+
+
+create table managers_1
+(
+ manager_id int,
+ first_name varchar(255),
+ last_name varchar(255),
+ age int,
+ gender varchar(1),
+ age_group varchar(255)
+)
+
+
+
+2. С созданной таблицей managers_1 выполните следующие действия:
+      a.   Добавьте три строки со следующими данными:
+
+manager_id	first_name	last_name	age	gender	age_group
+1			Ellis		Forbes		27		F	(25:35)
+2			Piter		Robinson	24		M	(18:25)
+3			Piter		Graham		23		M	(18:25)
+
+
+insert into managers_1 values
+(1, 'Ellis', 'Forbes', 27, 'F', '(25:35)'),
+(2, 'Piter', 'Robinson', 24, 'M', '(18:25)'),
+(3, 'Piter', 'Graham', 23, 'M', '(18:25)');
+
+
+
+b.   Для проверки результатов операции добавления данных получите все записи из таблицы managers_1.
+c.   Удалите все записи в таблице managers_1.
+d.   Для проверки результатов операции удаления данных получите все записи из таблицы managers_1.
+e.   Удалите саму таблицу managers_1 из базы данных.
+f.    Для проверки результата операции удаления таблицы попробуйте запросить данные из таблицы managers_1.
+
+select * from managers_1 
+delete from managers_1 
+select * from managers_1 
+drop table managers_1
+select * from managers_1 
+
+
+
+
+Задание 2
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=8891cc2874e69a463a1da53f166dc88a&hide=1
+
+
+
+1.	Одним запросом создайте таблицу managers_2, которая должна быть полной копией таблицы skill_managers.
+2.	Для проверки результатов запросите все данные из таблицы managers_2.
+3.	Одним запросом создайте таблицу managers_М, которая по структуре должна соответствовать таблице skill_managers, а по содержимому должна содержать менеджеров только мужского пола.
+4.	Для проверки результатов запросите все данные из таблицы managers_M.
+
+MSSQL
+select * into managers_2 from skill_managers
+select * from managers_2
+select * into managers_M from skill_managers  where gender='M'
+select * from managers_M
+
+
+Задание 3
+Выполните все пункты из задания 2 в среде MySQL.
+
+create table managers_2 as select * from skill_managers
+select * from managers_2
+create table managers_M as select * from skill_managers  where gender='M'
+select * from managers_M
+
+
+
+
+Задание 4
+https://dbfiddle.uk/?rdbms=mysql_8.0&fiddle=3891ecbbfad771b4b6996ccf25b4caf7&hide=1
+
+В тестовой среде расположена таблица skill_product_v2:
+ 
+Произведите следующие манипуляции:
+1.	Измените идентификатор product_id на значение 2 у строки с наименованием товара OS.
+2.	Измените идентификатор product_id на значение 3 у строки с наименованием товара HDD.
+3.	Удалите строки, у которых идентификатор product_id имеет значение null.
+
+update skill_product_v2 set product_id=2 where product_name='OS';
+update skill_product_v2 set product_id=3 where product_name='HDD';
+delete from skill_product_v2 where product_id is null
+select * from skill_product_v2
+
+
+
+Задание 5
+https://dbfiddle.uk/?rdbms=sqlserver_2017&fiddle=23724092119b58a6e3b16a7a9e21e38e&hide=1
+
+
+В тестовой среде находятся две таблицы:
+•	skill_customers: содержит информацию о поставщиках оборудования в разных штатах
+•	пустая таблица skill_customers_info, в структуре которой находится только одна строковая колонка — name.
+
+
+1.	Вставьте в таблицу skill_customers_info имена поставщиков из штатов Alabama, California и Nevada.
+
+insert into skill_customers_info
+select name from skill_customers
+where state in ('Alabama', 'California', 'Nevada')
+
+2.	Добавьте в таблицу skill_customers_info строковую колонку gender (длина строки — один символ).
+
+alter table skill_customers_info add gender varchar(1)
+
+3.	Менеджерам с именами Bradley Kramer, Kendrick Blevins, Giovanny Robinson, Darryl Mathis поставьте в колонку gender значение мужского пола М, а остальным — женского F.
+
+update skill_customers_info set gender='F'
+
+update skill_customers_info set gender='M'
+where name in
+('Bradley Kramer', 'Kendrick Blevins')
+
+select * from skill_customers_info 
+
+
+
+Задание 6
+
+https://dbfiddle.uk/?rdbms=sqlserver_2017&fiddle=20bf38c772ebd39f085bf8105f4f388d&hide=1
+
+
+В таблице skill_customers_suppliers содержатся данные о людях, 
+которые могут выступать в разных ролях: продавцов и/или поставщиков:
+
+1.	Люди, которые по данным таблицы skill_deals выступали и в роли поставщиков, и в роли покупателей.
+
+select customer_id from skill_deals
+intersect
+select supplier_id from skill_deals
+
+select * from skill_customers_suppliers where customers_suppliers_id in
+(
+select customer_id from skill_deals
+intersect
+select supplier_id from skill_deals
+)
+
+
+2.	К данным предыдущего условия добавьте покупателя, который, по данным таблицы skill_deals, 
+участвовал в сделке с максимальной суммой.
+
+select top 1 customer_id from skill_deals order by cnt*price_usd desc
+
+select * from skill_customers_suppliers where customers_suppliers_id in
+(
+select customer_id from skill_deals
+intersect
+select supplier_id from skill_deals
+union
+select top 1 customer_id from skill_deals order by cnt*price_usd desc
+)
+
+
+
+
+
+
+
+

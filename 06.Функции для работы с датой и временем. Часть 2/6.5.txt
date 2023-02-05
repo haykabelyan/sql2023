@@ -1,0 +1,14 @@
+
+
+
+select * from skill_operation
+
+SQL SERVER
+select DATEFROMPARTS(year,month,day) dt, event, manager_id from skill_operation 
+
+
+MYSQL(verjum sarkecink date type)
+select date(concat(year, '-', month, '-', day)) dt, event, manager_id from skill_operation
+
+select YEAR(date(concat(year, '-', month, '-', day))) dt, event, manager_id from skill_operation
+

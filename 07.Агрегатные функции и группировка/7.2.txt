@@ -1,0 +1,53 @@
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=3eb456ecafa3e40ae992827413c91f5b&hide=1
+
+
+select count(*) from skill_orders
+select count(manager) from skill_orders
+select count(manager),count(food_name)  from skill_orders
+
+select sum(cnt) from skill_orders
+select sum(total) from skill_orders
+
+
+// Erkusn el nuynn es
+select sum(cnt*price_usd), sum(total) from skill_orders
+
+// sarkecink rublov
+select sum(cnt*price_usd*80.3), sum(total) from skill_orders
+
+select avg(price_usd*80.3) from skill_orders
+
+
+select count(*),
+sum(cnt),
+avg(price_usd),
+sum(price_usd)/count(price_usd)
+from skill_orders
+
+
+
+select min(price_usd) from skill_orders
+
+select max(price_usd) from skill_orders
+
+
+select 
+min(ordr_date),
+max(ordr_date)
+from skill_orders
+
+
+ZADANIE
+
+1.
+select count(*) from skill_orders
+
+2.
+select sum(cnt) from skill_orders
+
+3.
+select min(price_usd), max(price_usd), avg(price_usd) from skill_orders
+
+
+
+

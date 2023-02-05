@@ -1,0 +1,61 @@
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=877fbe41b6ec2400c05cd697c13676bc&hide=1
+
+
+INNER JOIN NUYN CROSS JOINN e AVELACVAC PAYMANOV
+
+select * from skill_product
+select * from skill_product_category
+
+
+select * from skill_product t1
+inner join skill_product_category t2
+on t1.product_category_id = t2.product_category_id
+
+
+select 
+product_name,
+price_usd, 
+product_category_name  
+from skill_product t1
+inner join skill_product_category t2
+on t1.product_category_id = t2.product_category_id
+
+
+select 
+product_name,
+price_usd, 
+product_category_name,  
+t1.product_category_id
+from skill_product t1
+inner join skill_product_category t2
+on t1.product_category_id = t2.product_category_id
+
+
+
+
+
+
+
+ZADANIE
+
+1.
+
+select * from city_customers_suppliers inner join
+skill_customers_suppliers on
+city_customers_suppliers.city_id = skill_customers_suppliers.city_id
+
+2.
+
+select * from city_customers_suppliers inner join
+skill_customers_suppliers on
+city_customers_suppliers.city_id = skill_customers_suppliers.city_id
+inner join gender on
+gender.gender_id = skill_customers_suppliers.gender_id
+
+3.
+
+select name,city,gender from city_customers_suppliers inner join
+skill_customers_suppliers on
+city_customers_suppliers.city_id = skill_customers_suppliers.city_id
+inner join gender on
+gender.gender_id = skill_customers_suppliers.gender_id

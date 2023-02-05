@@ -1,0 +1,30 @@
+
+
+select current_timestamp,
+DATEADD(minute,1, current_timestamp),
+DATEADD(hour,2, current_timestamp)
+
+
+select current_timestamp,
+DATEADD(day,10, current_timestamp),
+DATEADD(month, 1, current_timestamp)
+
+
+select current_timestamp,
+DATEADD(day,10, current_timestamp),
+DATEADD(month, -1, current_timestamp)
+
+select current_timestamp,
+DATEADD(day,10, current_timestamp),
+DATEADD(month, -1, current_timestamp)
+
+select * from skill_events where
+dt_date >= current_timestamp
+and
+dt_date <= DATEADD(day, 1000, current_timestamp)
+
+
+select * from skill_events where
+dt_date >= current_timestamp
+and
+dt_date <= DATEADD(current_timestamp, interval 10 day)

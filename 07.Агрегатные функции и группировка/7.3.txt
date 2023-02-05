@@ -1,0 +1,37 @@
+
+
+select top 5 * from skill_orders
+
+select 
+count(*) cnt,
+sum(total) total,
+min(price_usd) min_price,
+max(price_usd) max_price,
+avg(price_usd) avg_price from skill_orders
+
+select 
+count(*) cnt,
+sum(total) total,
+min(price_usd) min_price,
+max(price_usd) max_price,
+avg(price_usd) avg_price from skill_orders
+where payment_method='cash'
+
+// distinct - chkrknvoxnery ta
+select distinct payment_method from skill_orders
+
+select distinct payment_method, ordr_date from skill_orders
+
+select count(distinct food_name) from skill_orders
+
+
+ZADANIE
+
+1.
+select DISTINCT payment_method from skill_orders
+
+2.
+select DISTINCT food_name, payment_method from skill_orders
+
+3.
+select count(DISTINCT food_name) from skill_orders

@@ -1,0 +1,5 @@
+select country_name, population from skill_countries; 
+select country_name, population+10000000 from skill_countries; 
+select country_name, population population_old, population+10000000 population_modifies from skill_countries; 
+select country_name, population population_old, (population+population)/2 population_modifies from skill_countries; 
+select country_name, population population_old, population*1.1 population_modifies from skill_countries; 

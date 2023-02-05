@@ -1,0 +1,7 @@
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=efe4adeb063d28af39592bcfd1a126c9&hide=1
+
+select * from skill_managers
+select * from skill_managers where age=23
+select * from skill_managers where age=38
+select * from skill_managers where sex='M'
+select * from skill_managers where first_name='Robinson'

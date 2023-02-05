@@ -1,0 +1,32 @@
+
+
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=487861367f32b741a5e6b1c12b7005b8&hide=1
+
+
+select * from skill_managers
+select * from skill_managers where last_transaction_dt='2020-05-02 12:37:49.000'
+select * from skill_managers where birth_date='1995-08-21'
+
+
+select * from skill_managers where CAST(last_transaction_dt as date) ='2020-05-02 12:37:49.000'
+select * from skill_managers where CAST(last_transaction_dt as time) ='2020-05-02 12:37:49.000'
+
+
+// ZADANIE 1
+select * from skill_managers
+where last_transaction_dt = '2020-05-02 12:37:49.000'
+
+// ZADANIE 2
+select * from skill_managers
+where birth_date = '1993-09-25'
+
+
+// ZADANIE 3
+select * from skill_managers where CAST(last_transaction_dt as date) ='2020-05-02'
+
+
+// ZADANIE 4
+select * from skill_managers where CAST(last_transaction_dt as time) ='12:37:49'
+
+
+

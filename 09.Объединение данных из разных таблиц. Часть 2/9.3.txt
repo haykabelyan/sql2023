@@ -1,0 +1,78 @@
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=f0cd43cf5d82aef8a2689f3352e20e65&hide=1
+
+
+select * from skill_product
+select * from skill_product_category
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+select * from skill_product
+inner join skill_product_category
+on skill_product.product_id = skill_product_category.product_category_id
+
+// inner karox enk chdnel
+
+select * from skill_product
+join skill_product_category
+on skill_product.product_id = skill_product_category.product_category_id
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+// HISHENK cross join
+select * from skill_product cross join skill_product_category
+OR
+select * from skill_product, skill_product_category
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+// INNER JOIN cross join+payman
+select * from skill_product
+join skill_product_category
+on skill_product.product_category_id = skill_product_category.product_category_id
+
+OR
+
+select * from skill_product
+cross join skill_product_category
+where skill_product.product_category_id = skill_product_category.product_category_id
+
+
+OR
+
+select * from skill_product, skill_product_category
+where skill_product.product_category_id = skill_product_category.product_category_id
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+ZADANIE
+
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=09f386514208a4ff95bac05e31646d21&hide=1
+
+
+1.
+select * from city_customers_suppliers inner join
+skill_customers_suppliers on
+city_customers_suppliers.city_id = skill_customers_suppliers.city_id
+where city like ('K%')
+
+2.
+elect * from city_customers_suppliers 
+inner join skill_customers_suppliers 
+on
+city_customers_suppliers.city_id = skill_customers_suppliers.city_id
+inner join gender on
+gender.gender_id = skill_customers_suppliers.gender_id
+where gender = 'F'
+
+3.
+select name,city,gender from city_customers_suppliers inner join
+skill_customers_suppliers on
+city_customers_suppliers.city_id = skill_customers_suppliers.city_id inner join
+gender on
+gender.gender_id = skill_customers_suppliers.gender_id
+where city like ('K%') and gender = 'M'
+
+

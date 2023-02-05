@@ -1,0 +1,43 @@
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=bc70c52a217f89bcfe05dc8c4f6b2479&hide=1
+
+select * from skill_sales_march
+select * from skill_sales_september
+
+select * from skill_sales_march
+where dt in (select dt from skill_sales_september)
+
+select * from skill_sales_march
+where 
+product_id in (select product_id from skill_product where product_name='HDD')
+
+
+select * from skill_sales_march
+where 
+product_id in (select product_id from skill_product where product_name='HDD'
+or
+product_name='OS')
+
+
+
+// TE VOR MANAGER VOR AMSUM iNChKAN E VACHAREL
+select first_name, last_name, 
+(select sum(t2.cnt) from skill_sales_march t2 where t2.manager_id = t1.manager_id)
+cnt_march,
+(select sum(t3.cnt) from skill_sales_march t3 where t3.manager_id = t1.manager_id)
+cnt_march
+from skill_managers t1
+
+
+
+select dt, sum(cnt) from
+(select * from skill_sales_march
+union all
+select * from skill_sales_april) a
+group by dt
+order by sum(cnt) desc
+
+
+
+
+
+

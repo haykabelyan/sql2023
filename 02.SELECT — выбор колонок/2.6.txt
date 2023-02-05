@@ -1,0 +1,14 @@
+
+select abs(-100);
+
+select square(8);
+
+select power(2,2);
+
+select sqrt(64);
+
+select square(sqrt(64));
+
+select pi();
+
+select round(pi(), 2);

@@ -1,0 +1,6 @@
+
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=7cec10b53969bbe2e5af275ae81045f3&hide=1
+
+select * from skill_managers;
+
+select (cnt*price_rub)/85.30 sum_usd from skill_price;

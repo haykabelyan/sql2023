@@ -1,0 +1,23 @@
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=f9acffeb85c75a9bfff839a35446ef00&hide=1
+
+ZADANIE
+
+1.
+select * from skill_customers_suppliers
+inner join gender on gender.gender_id = skill_customers_suppliers.gender_id
+inner join age_range on age_range.age_range_id = skill_customers_suppliers.age_range_id
+
+
+2.
+select name,gender,age_range from skill_customers_suppliers
+inner join gender on gender.gender_id = skill_customers_suppliers.gender_id
+inner join age_range on age_range.age_range_id = skill_customers_suppliers.age_range_id
+
+3.
+select gender,age_range,count(skill_customers_suppliers.gender_id) cnt
+from skill_customers_suppliers
+inner join gender on gender.gender_id = skill_customers_suppliers.gender_id
+inner join age_range on age_range.age_range_id = skill_customers_suppliers.age_range_id
+group by gender,age_range
+
+

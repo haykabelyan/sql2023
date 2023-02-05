@@ -1,0 +1,28 @@
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=9dbf2318b90969fe530bf5b45f2cbee5&hide=1
+
+
+// cross join - bazmapatkum e amne meky bolori het
+select * from suits;
+select * from cards;
+
+select * from suits cross join cards
+
+
+// 
+
+
+select * from table1;
+select * from table2;
+select * from table3;
+
+
+select * from table1 cross join table2 cross join table3
+
+
+ZADANIE
+
+1.
+select * from sizes
+select * from colors
+select * from sizes cross join colors
+

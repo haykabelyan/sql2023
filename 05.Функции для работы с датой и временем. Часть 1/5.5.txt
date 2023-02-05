@@ -1,0 +1,12 @@
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=487861367f32b741a5e6b1c12b7005b8&hide=1
+
+
+//  ZADANIE 1
+select format(birth_date, 'yyyy/MM/dd') birth_date from skill_managers
+select date_format(birth_date, '%Y/%m/%d') birth_date from skill_managers
+
+
+// ZADANIE 2
+
+
+

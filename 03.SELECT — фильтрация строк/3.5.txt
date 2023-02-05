@@ -1,0 +1,9 @@
+
+select * from skill_managers where age in (25, 33, 37, 42)
+select * from skill_managers where first_name in ('Piter', 'Kaiden', 'Lacey')
+select * from skill_managers where age between 40 and 50
+select * from skill_managers where last_name like 'Mac%'
+select * from skill_managers where last_name like '%nen'
+
+
+

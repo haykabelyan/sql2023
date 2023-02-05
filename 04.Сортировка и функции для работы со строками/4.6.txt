@@ -1,0 +1,11 @@
+select last_name from skill_managers where charindex('O', last_name)=1 // mysql error
+OR
+select last_name from skill_managers where last_name like 'O%'
+
+select last_name from skill_managers where charindex('o', last_name) = 6 // ete minchev ayd o chka u henc 6rd e o-n
+
+
+ZADANIE 1
+
+select *  from skill_managers
+where charindex('Mac', last_name)=1

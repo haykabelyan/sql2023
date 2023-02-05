@@ -1,0 +1,50 @@
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=ea578ff0428a092dd6955fe3f3c36f68&hide=1
+
+
+ZADANIE 1:
+select * from users;
+select first_name, surname, gender, age from users;
+select top 5 first_name, surname, gender, age from users;
+select first_name, surname, gender, age from users limit 5;
+
+ZADANIE 2:
+https://dbfiddle.uk/
+select @@version;
+select (100+99)/2 + (95-5)/3
+select 1+2+3+4+5+6+7+8+9 sum_1_9, (1+9)*4+5 sum_1_9_v2
+
+ZADANIE 3:
+select * from users;
+select first_name,surname,salary_rub,work_experience_months, salary_rub*work_experience_months salary_all from users;
+
+ZADANIE 4:
+select 
+first_name+surname full_name,
+salary_rub,
+work_experience_months,
+salary_rub - (salary_rub / 100) * tax_percent salary_white,
+(salary_rub - (salary_rub / 100) * tax_percent) * work_experience_months salary_all 
+from users
+
+ZADANIE 5:
+select concat(first_name,surname) full_name, 
+bonus_rub, bonus_cnt,
+bonus_rub*bonus_cnt bonus_all
+from users;
+
+ZADANIE 6:
+select concat(first_name, ' ', surname) full_name, 
+salary_rub, work_experience_months,
+salary_rub - salary_rub*tax_percent/100 salary_white,
+(salary_rub - salary_rub*tax_percent/100) * work_experience_months salary_all,
+bonus_rub*bonus_cnt bonus_all,
+(salary_rub - salary_rub*tax_percent/100) * work_experience_months + bonus_rub*bonus_cnt
+salary_total from users;
+
+
+ZADANIE 7:
+select FIO,
+invested_sum * ( annual_rate/100 * POWER(1+annual_rate/100, total_years) ) / 
+(POWER(1+annual_rate/100, total_years)-1) R
+
+from investors;

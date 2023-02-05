@@ -1,0 +1,123 @@
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=d1554fd336b2a10f7abe941bd2c70084&hide=1
+
+select * from skill_countries
+
+// 1. ACHMAN KARGOV
+select * from skill_countries order by population 
+
+// 2. Nvazman kargov
+select * from skill_countries order by population DESC 
+
+// 3. @st continent_id-i, heto @st population-i
+select * from skill_countries order by continent_id,  population DESC
+
+// 4.  @st country_id-i, heto @st population-i
+select * from skill_cities order by country_id,  population DESC
+
+// 5. Qaxaqnery dasavorel @st erkrneri, ev arajiny ereva mayraqaxaqy
+// ev sortavorenk @st bnakchutyan
+select * from skill_cities order by country_id, is_capital DESC, population DESC
+
+
+// 6. cuyc tel amena mec bnakchutyun unecox qaxaq@ (Shanghai)
+select top 1 * from skill_cities order by population DESC
+
+// 7. Mek petutyan mej amena poqr bnakchutyun unecox qaxaqy (Chengdu)
+select top 1 * from skill_cities where country_id=10 order by population
+ 
+// 8. cuyc tal bolor mayraqaxqnery nvazman kargov 
+select * from skill_cities where is_capital=1 order by population DESC
+
+
+
+// 9.
+MYSQL
+select first_name,
+length(first_name) length_first_name,
+trim(first_name) trim_first_name,
+length( trim(first_name) ) length_trim_first_name
+from skill_customers
+
+
+// 10 BEri nrarq ovker probelner chunen sksbum ev verjum
+select * from skill_customers where
+length(first_name) = length(trim(first_name))
+
+select * from skill_customers where not
+first_name like ' %' and not first_name like ' %'
+
+
+// 11.  SQL SERVER
+select rtrim(ltrim(first_name)) first_name,
+rtrim(ltrim(last_name)) last_name
+from skill_customers
+
+
+// 12. item_name syuny sarqel mecatar
+
+select 
+substring(item_name,1,1),
+substring (item_name, 2, len(item_name)-1)
+from skill_price
+
+select 
+upper(substring(item_name,1,1)),
+lower(substring (item_name, 2, len(item_name)-1))
+from skill_price
+
+select 
+concat( upper(substring(item_name,1,1)),
+lower(substring (item_name, 2, len(item_name)-1)) ) item_name,
+price_rub,
+cnt
+from skill_price
+
+// 13. bajanenk toxery syueri skill_fix-um
+
+select * from skill_fix
+
+select 
+trim( substring(str_columns,1,3) ) id,
+trim( substring(str_columns,5,8) ) first_name,
+trim( substring(str_columns,14,13) ) last_name,
+trim( substring(str_columns,28,8) ) age,
+trim( substring(str_columns,37,1) ) gender
+from skill_fix
+
+select 
+trim( substring(str_columns,1,3) ) id,
+trim( substring(str_columns,5,8) ) first_name,
+trim( substring(str_columns,14,13) ) last_name,
+trim( substring(str_columns,28,8) ) age,
+trim( substring(str_columns,37,1) ) gender
+from skill_fix where not trim( substring(str_columns,28,8) ) like '% %'
+
+
+
+select 
+trim( substring(str_columns,1,3) ) id,
+trim( substring(str_columns,5,8) ) first_name,
+trim( substring(str_columns,14,13) ) last_name,
+replace( trim( substring(str_columns,28,8) ), ',', ' ') age,	// mek tvi het storaket kar hanecink
+trim( substring(str_columns,37,1) ) gender
+from skill_fix
+
+
+
+
+
+// 15. Yntrel miayn ayn syunery voronc toxerum nerarvac e [wrong]
+
+SQL SERVER
+select trim(replace(last_name, '[wrong]', '')) last_name
+from skill_customers where charindex('[wrong]', last_name)>00
+
+MYSQL
+
+select trim(replace(last_name, '[wrong]', '')) last_name
+from skill_customers where locate('[wrong]', last_name)>0
+
+Postgre
+select trim(replace(last_name, '[wrong]', '')) last_name
+from skill_customers where strpos(last_name, '[wrong]')>0
+

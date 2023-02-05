@@ -1,0 +1,18 @@
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=27f0ecd36caca566ef4dcba5b2b9f06f&hide=1
+
+
+select * from skill_customers where trim(first_name) = 'Piter'
+
+
+select
+trim(first_name) first_name,
+trim(last_name) last_name
+from skill_customers where trim(first_name) = 'Piter'
+
+select
+trim(first_name) first_name,
+trim(last_name) last_name,
+age from skill_customers
+where trim(first_name) = 'Piter'
+order by age
+

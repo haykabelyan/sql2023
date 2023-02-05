@@ -1,0 +1,33 @@
+
+
+select payment_method, count(*) cnt,
+sum(total) total,
+avg(price_usd) avg_price
+from skill_orders where payment_method != 'debit'
+group by payment_method
+
+// food_name cuyc chi talis bay cmenk irenov filter enk arel
+select payment_method, count(*) cnt,
+sum(total) total,
+avg(price_usd) avg_price
+from skill_orders where food_name = 'Apples'
+group by payment_method
+
+
+select payment_method, count(*) cnt,
+sum(total) total,
+avg(price_usd) avg_price
+from skill_orders where food_name = 'Apples'
+group by payment_method
+having count(*)=4
+
+
+select payment_method, count(*) cnt,
+sum(total) total,
+avg(price_usd) avg_price
+from skill_orders
+group by payment_method
+having sum(total)>400
+
+
+

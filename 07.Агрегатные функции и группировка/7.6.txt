@@ -1,0 +1,31 @@
+select payment_method,food_name, count(*) cnt,
+sum(total) total,
+avg(price_usd) avg_price
+from skill_orders
+group by payment_method, food_name
+order by payment_method, food_name
+
+
+select payment_method,food_name, count(*) cnt,
+sum(total) total,
+avg(price_usd) avg_price
+from skill_orders
+group by payment_method, food_name
+order by count(*) DESC
+
+
+select payment_method,food_name, count(*) cnt,
+sum(total) total,
+avg(price_usd) avg_price
+from skill_orders
+group by payment_method, food_name
+order by cnt DESC
+
+
+select payment_method,food_name, count(*) cnt,
+sum(total) total,
+avg(price_usd) avg_price
+from skill_orders
+group by payment_method, food_name
+having count(*)=4
+order by cnt DESC

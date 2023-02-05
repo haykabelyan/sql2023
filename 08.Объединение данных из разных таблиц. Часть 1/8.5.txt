@@ -1,0 +1,53 @@
+select * from suits;
+select * from cards;
+
+select * from suits cross join cards;
+
+select * from table1 cross join table2 cross join table3
+
+
+select suit_name from suits cross join cards;
+
+
+select table1.field1 from table1 cross join table2 cross join table3
+
+select table1.field1,  table3.field1 from table1 cross join table2 cross join table3
+
+select * from suits cross join cards where suit_name='Diamonds'; 
+
+
+// Clubs	9 Diamonds	9 Hearts	9 Spades	9
+// Qani hat sirt ka, qani hat xar ka ?
+select suit_name, count(*) from suits cross join cards group by suit_name
+
+// 10-4hat, 6-4hat, 7-4hat, 8-4hat
+// Amen tesakic qani kart ka ?
+select card_name, count(*) from suits cross join cards group by card_name
+
+
+
+
+select * from table1 cross join table2 cross join table3  where table3.field3 like '%row1%'
+
+select table3.* from table1 cross join table2 cross join table3  where table3.field3 like '%row1%'
+
+
+
+
+select * from suits cross join cards;
+OR
+select * from suits, cards; // NUYNN E
+
+
+select * from table1 cross join table2 cross join table3
+OR
+select * from table1, table2, table3 // NUYNN E
+
+
+
+
+ZADANIE:
+
+select * from sizes, colors
+where sizes.size != 'XXL' or colors.color != 'red'
+

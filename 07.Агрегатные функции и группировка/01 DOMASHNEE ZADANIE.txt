@@ -1,0 +1,32 @@
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=487861367f32b741a5e6b1c12b7005b8&hide=1
+
+
+select * from skill_managers where birth_date = '1991-02-10'
+
+select * from skill_managers where birth_date 
+in('1982-11-03', '1999-03-14');
+
+select * from skill_managers 
+where cast(last_transaction_dt as date) = '2020-11-19';
+
+
+select * from skill_managers 
+where cast(last_transaction_dt as time) = '04:01:01';
+
+select * from skill_managers where birth_date>='1999-03-14'
+
+select * from skill_managers where birth_date>='1991-03-14' 
+and birth_date<='2020-01-06'
+
+select * from skill_managers where birth_date>='1991-03-14' 
+and last_transaction_dt>='2020-05-25 17:51:00'
+
+
+select * from skill_managers 
+where CAST(last_transaction_dt as date) >='2020-09-02' 
+and CAST(last_transaction_dt as date) <='2021-09-02' 
+
+
+select * from skill_managers where
+CONCAT(age, '-', gender) = '27-F'
+

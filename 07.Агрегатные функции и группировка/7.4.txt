@@ -1,0 +1,37 @@
+
+
+select top 5 * from skill_orders
+
+select count(*) from skill_orders where payment_method = 'cash'
+select count(*) from skill_orders where payment_method = 'credit'
+select count(*) from skill_orders where payment_method = 'debit'
+OR
+select count(*) from skill_orders group by payment_method
+
+
+select payment_method, count(*) from skill_orders group by payment_method
+
+
+select distinct payment_method from skill_orders 
+
+
+select payment_method from skill_orders group by payment_method
+
+select payment_method, count(*) cnt,
+sum(total) total,
+avg(price_usd) avg_price
+from skill_orders group by payment_method
+
+// beri miayn unical anunnery
+select distinct food_name from skill_orders
+
+
+
+ZADANIE
+
+1.
+
+2.
+
+3.
+

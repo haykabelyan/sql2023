@@ -1,0 +1,207 @@
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=d4dd68c06d423def9d04d35db0677a7b&hide=1
+
+
+
+Задание 1
+
+1.	Напишите и выполните SQL-запрос, получающий объединённые данные двух таблиц, 
+product_customers и product_suppliers. Используйте оператор объединения без повтора значений — UNION.
+
+--task1
+select * from product_customers
+union
+select * from product_suppliers
+
+2. Напишите и выполните SQL-запрос, получающий объединённые данные двух таблиц, 
+skill_product и skill_product_v2. Используйте оператор объединения без повтора значений — UNION. 
+
+--task2
+select * from skill_product
+union
+select * from skill_product_v2
+
+3. Напишите и выполните SQL-запрос, получающий объединённые данные двух таблиц, 
+skill_product и skill_product_v2. Используйте оператор объединения UNION ALL, 
+который не удаляет дубликаты в результирующей выборке. 
+
+--task3
+select * from skill_product
+union all
+select * from skill_product_v2
+
+4. Получите одним запросом список товаров без повторений (колонки product_name) 
+из таблиц skill_product и skill_product_v2.
+
+--task4
+select product_name from skill_product
+union
+select product_name from skill_product_v2
+
+5. Получите одним запросом список городов без повторений из таблиц 
+skill_customers и skill_suppliers.
+
+
+--task5
+select city from skill_customers
+union
+select city from skill_suppliers
+
+
+
+Задание 2
+
+
+1. Напишите и выполните SQL-запрос, получающий пересекающиеся данные двух таблиц, 
+product_customers и product_suppliers, Используйте оператор пересечения — INTERSECT.
+
+
+--task1
+select * from product_customers
+intersect
+select * from product_suppliers
+
+
+2. Напишите и выполните SQL-запрос, получающий строки, которые есть и в таблице skill_product, 
+и в таблице skill_product_v2.
+
+
+--task2
+select * from skill_product
+intersect
+select * from skill_product_v2
+
+3. Напишите и выполните SQL-запрос, получающий строки, которые есть в таблице product_customers, 
+но отсутствуют в таблице product_suppliers. Используйте оператор исключения — EXCEPT.
+
+--task3
+select * from product_customers
+except
+select * from product_suppliers
+
+
+4. Напишите и выполните SQL-запрос, получающий строки, которые есть в таблице product_suppliers, 
+но отсутствуют в таблице product_customers.
+
+
+--task4
+select * from product_suppliers
+except
+select * from product_customers
+
+5. Таблицы skill_product и skill_product_v2 содержат данные о товарах. 
+Выведите одним запросом список товаров (колонки product_name), которые есть в обеих таблицах.
+
+
+
+--task5
+select product_name from skill_product
+intersect
+select product_name from skill_product_v2
+
+
+
+
+Задание 3
+
+
+1. Напишите запрос, соединяющий все строки таблицы city_suppliers (со списком городов)  
+со всеми строками таблицы city_property (с параметрами оценки города). В запросе используйте оператор CROSS JOIN.
+
+select * from city_suppliers cross join city_property
+
+
+2. Выполните задание из предыдущего пункта без явного использования оператора CROSS JOIN.
+
+select * from city_suppliers, city_property
+
+
+3. Сопоставьте строки из таблицы gender с женским полом (gender='F') 
+со всеми периодами возрастов таблицы age_range, исключив период до 18 лет (age_range!='[-18]').
+
+select * from gender cross join age_range
+where gender.gender = 'F' and age_range.age_range != '[-18]'
+
+
+
+
+
+
+///////////////////////// SHARUNAKEL //////////////////////////////////////////
+
+
+
+
+
+4. В таблице week_days перечислены дни недели и признак выходного дня для каждой строки. 
+В таблице lessons содержится расписание уроков на один день: номер урока, название урока, 
+время начала и время окончания урока.
+
+
+
+Запросом составьте сетку расписания на каждый будний день следующего вида:
+
+
+week_day
+День недели (поле week_day из таблицы week_days)
+
+
+name
+Название урока (поле name из таблицы lessons)
+
+lesson_time
+Время начала урока и через тире — время окончания урока (поля lesson_begin и lesson_end таблицы lessons).
+
+
+select week_day, lessons.name,
+concat(lesson_begin, '-', lesson_end) lesson_time
+from lessons cross join week_days
+where is_weekend = 0
+
+
+
+5. Из таблиц skill_suppliers и skill_customers выведите список всех пар имён продавцов (supplier) 
+и покупателей (customer), которые продают или покупают процессоры (product='CPU').
+
+select customer, supplier from skill_customers
+cross join skill_suppliers
+where skill_customers.product = 'CPU' and skill_suppliers.product = 'CPU'
+
+
+
+
+Задание 4
+
+
+2. Колонка customer таблицы skill_customers содержит имена покупателей, 
+а колонка supplier таблицы skill_suppliers — имена продавцов. 
+Сделайте вывод, : есть ли одинаковые имена в списках продавцов и покупателей, 
+не используя оператор пересечения INTERSECT. Решите задачу и объясните логику решения.
+
+select s.supplier, c.customer
+from skill_suppliers s cross join skill_customers c
+where s.supplier = c.customer
+
+
+3. В таблице продавцов skill_suppliers в колонке supplier указано полное имя продавца, 
+состоящее из имени — первое слово в значении колонки supplier и фамилии — второе слово 
+колонки supplier. 
+Одним запросом составьте все возможные полные имена, состоящие из имён и 
+фамилий продавцов из таблицы skill_suppliers.
+
+
+select * from skill_customers
+select * from skill_suppliers
+
+// arandznacrecink anunnery
+select substring(supplier, 1, charindex(' ', supplier)-1) from skill_suppliers
+
+// arandznacrecink azganunnery
+select substring(supplier, charindex(' ', supplier)+1, len(supplier)) from skill_suppliers
+
+// bolor hnaravor tarberaknery bkreni(bolory bolori het kkapi)
+select 
+substring(t1.supplier, 1, charindex(' ', t1.supplier)-1), 
+substring(t2.supplier, charindex(' ', t2.supplier)+1, len(t2.supplier))
+from 
+skill_suppliers t1
+cross join skill_suppliers t2

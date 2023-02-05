@@ -1,0 +1,25 @@
+
+
+// petk e miacnel first_name ev last_name` FIO 
+// ev hin syunery jnjel (first_name, last_name)
+
+select * from skill_managers
+
+alter table  skill_managers add FIO varchar(200)
+
+select * from skill_managers
+
+update skill_managers set FIO = concat(first_name, ' ', last_name)
+
+alter table  skill_managers drop column  first_name
+alter table  skill_managers drop column last_name
+
+//////////////////////////////////////////////////
+
+// petk grnder - um grvac 'F' ev 'M' poxarinel 0 ev 1
+
+alter table  skill_managers add gender_2 int
+update skill_managers set gender_2 = 0
+update skill_managers set gender_2 = 1 where gender='M'
+alter table  skill_managers drop column  gender
+select * from skill_managers

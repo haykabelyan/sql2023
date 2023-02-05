@@ -1,0 +1,7 @@
+select * from skill_managers
+select * from skill_managers where age > 23
+select * from skill_managers where age >= 23
+select * from skill_managers where age <= 23
+select * from skill_managers where sex<'M'		// amen tar uni ir tvayin kody, av hamematutyuny katarvum e ayd kodi het
+
+

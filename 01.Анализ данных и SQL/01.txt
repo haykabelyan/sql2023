@@ -1,0 +1,2 @@
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=efe4adeb063d28af39592bcfd1a126c9&hide=1
+https://www.db-fiddle.com/f/heQp8L2uW6BW43qsGPUCSD/0

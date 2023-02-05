@@ -1,0 +1,49 @@
+https://dbfiddle.uk/?rdbms=mysql_8.0&fiddle=18a8167c825c0c95c44705b9885186c1&hide=1
+
+
+
+PRAKTIKA
+select CAST(CURRENT_TIMESTAMP AS Date) date,CAST(CURRENT_TIMESTAMP AS Time) time
+
+select DATE_FORMAT(CURRENT_TIMESTAMP,'%Y-%m-%d') date,DATE_FORMAT(CURRENT_TIMESTAMP,'%H:%i') time // MySQL
+
+select extract(year FROM CURRENT_TIMESTAMP),
+extract(month FROM CURRENT_TIMESTAMP),
+extract(day FROM CURRENT_TIMESTAMP),
+extract(hour FROM CURRENT_TIMESTAMP)
+
+select datepart(hour, CURRENT_TIMESTAMP),
+datepart(minute, CURRENT_TIMESTAMP),
+datepart(year, CURRENT_TIMESTAMP),
+datepart(month, CURRENT_TIMESTAMP)
+
+
+
+MYSQL
+
+select current_timestamp datetime_default,
+DATE_FORMAT (CURRENT_TIMESTAMP, '%d-%M-%y %h:%m:%s') formated
+
+select current_timestamp datetime_default,
+DATE_FORMAT (CURRENT_TIMESTAMP, '%d-%M-%y') formated
+
+select current_timestamp datetime_default,
+DATE_FORMAT (CURRENT_TIMESTAMP, '%y') formated
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,181 @@
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=ef68a610bdc40240fcfb99b9f6af9024&hide=1
+
+
+Задание 1
+
+1.	С помощью INNER JOIN присоедините к таблице с сотрудниками employee справочник возрастных 
+диапазонов age_range. 
+Поля-идентификаторы для условия соединения в обеих таблицах называются age_range_id. 
+
+select * from employee
+select * from age_range
+
+select * from employee
+inner join age_range on employee.age_range_id = age_range.age_range_id
+
+2.	С помощью INNER JOIN присоедините к таблице с сотрудниками employee справочник полов gender. 
+Поля-идентификаторы для условия соединения в обеих таблицах называются gender_id.
+
+select * from employee
+inner join gender on employee.gender_id = gender.gender_id
+
+
+3.	С помощью INNER JOIN присоедините к таблице с сотрудниками employee справочник 
+департаментов department. 
+Поля-идентификаторы для условия соединения в обеих таблицах называются department_id.
+
+select * from employee
+inner join department on employee.department_id = department.department_id
+
+
+4.	В справочнике департаментов department присутствуют не все значения идентификаторов department_id, 
+которые используются в таблице с сотрудниками employee, 
+поэтому для исключения потери строк при присоединении таблиц employee и department используйте LEFT JOIN.
+
+select * from employee
+left join department on employee.department_id = department.department_id
+
+
+Задание 2
+Доработайте все запросы из задания 1, учитывая приведённые ниже правила.
+1.	Для таблиц используйте следующие псевдонимы:
+Имя таблицы	Псевдоним
+employee	e
+gender	g
+department	d
+
+
+select e.name,e.age,r.age_range from employee e
+inner join age_range r on e.age_range_id = r.age_range_id
+
+
+Задание 3
+1.	С помощью INNER JOIN присоедините к таблице с сотрудниками employee следующие справочники:
+o	справочник возрастных диапазонов age_range;
+o	справочник полов gender;
+o	справочник департаментов department.
+В результирующую выборку должны попасть следующие колонки: 
+•	имя сотрудника;
+•	возраст;
+•	название возрастного диапазона;
+•	наименование департамента (используйте название для вывода — department).
+
+
+select e.name, age, a.age_range 
+from employee e
+inner join department d on e.department_id = d.department_id
+inner join age_range a on e.age_range_id = a.age_range_id
+inner join gender g on e.gender_id = g.gender_id
+
+
+
+*******************************************************************
+
+
+
+2.	В справочнике департаментов department присутствуют не все значения идентификаторов department_id, 
+которые используются в таблице с сотрудниками employee. 
+Доработайте запрос из предыдущего пункта задания так, 
+чтобы в результирующую выборку попали все строки из таблицы с сотрудниками employee, 
+независимо от значения поля department_id.
+
+
+select e.name,age,r.age_range,gender,d.name department from employee e
+inner join age_range r on e.age_range_id = r.age_range_id
+inner join gender g on e.gender_id = g.gender_id
+left join department d on e.age_range_id = d.department_id
+
+
+3.	Доработайте запрос из предыдущего пункта так, чтобы в результирующую выборку попадали строки, 
+в которых длина имени и фамилии сотрудника (поля name) строго больше 10 символов. 
+
+
+select e.name,age,r.age_range,gender,d.name department from employee e
+inner join age_range r on e.age_range_id = r.age_range_id
+inner join gender g on e.gender_id = g.gender_id
+inner join department d on e.age_range_id = d.department_id
+where len(e.name) > 10
+
+
+
+4.	Доработайте запрос из пункта 2 так, чтобы в результирующую выборку попадали сотрудники, 
+которые работают либо в департаменте Marketing, либо в департаменте IT, 
+а также возраст которых равен или больше 25.
+Во всех запросах для таблиц используйте следующие псевдонимы:
+
+Имя таблицы	Псевдоним
+employee	e
+gender	g
+department	d
+
+
+select e.name,age,r.age_range,gender,d.name department from employee e
+inner join age_range r on e.age_range_id = r.age_range_id
+inner join gender g on e.gender_id = g.gender_id
+inner join department d on e.age_range_id = d.department_id
+where d.name in ('Marketing', 'IT')
+and age>=25
+
+Задание 4
+присоединение справочника департаментов к таблице сотрудников. 
+При этом используются псевдонимы таблиц e — employee и d — department. 
+В результирующую выборку выводятся следующие колонки: имя сотрудника, 
+возраст и наименование департамента. Для последней колонки используйте название для вывода — department.
+
+
+select e.name, age, d.name from employee e
+left join department d on e.department_id = d.department_id
+
+
+
+
+Задание 5
+1. К таблице со списком сотрудников employee (псевдоним e) присоедините справочник возрастных 
+категорий age_range_band (псевдоним r1).
+Для условия соединения используйте правило: 
+возраст age таблицы employee должен быть строго больше значения from_value таблицы age_range_band и 
+одновременно меньше или равен значению to_value.
+В результирующую выборку должны попасть следующие поля: 
+имя сотрудника, возраст и название временного диапазона с именем столбца true_range.
+
+select e.name, age, r1.age_range true_range from employee e
+left join age_range_band r1 on
+r1.from_value<e.age
+and
+e.age <= r1.to_value
+
+
+2. К запросу из предыдущего пункта присоедините ещё одну таблицу — 
+справочник возрастных категорий age_range (псевдоним r2) со следующим условием присоединения: 
+равенство идентификаторов age_range_id обеих таблиц.
+К колонкам результата добавьте ещё одно поле с именем возрастного диапазона из таблицы age_range, 
+назовите колонку id_range.
+
+
+select e.name, age, r1.age_range true_range, r2.age_range id_range from employee e
+left join age_range_band r1 on
+r1.from_value<e.age
+and
+e.age <= r1.to_value
+left join age_range r2 on e.age_range_id = r2.age_range_id
+
+
+3. Доработайте запрос из предыдущего пункта. 
+Выведите в результат все строки, в которых в таблице employee указан идентификатор возрастного 
+диапазона age_range_id, связанный с таблицей age_range, которые не коррелируется с реальным 
+возрастом сотрудника, указанного в колонке age.
+Для сравнения используйте возрастной диапазон, полученный в результате использования 
+значений from_value и to_value справочника age_range_band.
+
+
+
+select e.name, age, r1.age_range true_range, r2.age_range id_range from employee e
+left join age_range_band r1 on
+r1.from_value<e.age
+and
+e.age <= r1.to_value
+left join age_range r2 on e.age_range_id = r2.age_range_id
+where r1.age_range != r2.age_range
+
+
+

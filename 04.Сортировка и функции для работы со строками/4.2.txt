@@ -1,0 +1,7 @@
+https://dbfiddle.uk/?rdbms=sqlserver_2019&fiddle=924b73f993aacb78c18a39cd675a95d7&hide=1
+
+select * from skill_cities order by population ASC;
+select * from skill_cities order by population DESC;
+select * from skill_cities order by country_id ASC, population DESC;
+select * from skill_cities where country_id = 9 order by population DESC;
+
